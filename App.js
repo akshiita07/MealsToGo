@@ -3,6 +3,9 @@ import { StatusBar, StyleSheet, Text, View, SafeAreaView, Platform } from 'react
 import { Searchbar } from 'react-native-paper';
 import { RestaurantsScreen } from './src/features/restaurant/screens/restaurants.screen';
 
+// for styling using styled-components:
+import styled from 'styled-components/native';
+
 // console.log(StatusBar.currentHeight)   //returns null for ios
 export default function App() {
   return (
@@ -12,7 +15,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-
-});

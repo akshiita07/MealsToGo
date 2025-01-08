@@ -3,34 +3,32 @@ import { StatusBar, StyleSheet, Text, View, SafeAreaView, Platform } from 'react
 import { Searchbar } from 'react-native-paper';
 import { RestaurantInfo } from '../components/restaurants-info.component'
 
+// for styling using styled-components:
+import styled from 'styled-components/native';
+
+const SafeArea = styled(SafeAreaView)`
+    flex: 1;
+    margin-top:${StatusBar.currentHeight}px;
+`
+const SearchContainer = styled.View`
+background-color: green;
+`
+const ListContainer = styled.View`
+ flex: 1;
+ background-color: blue;
+`
+
 export const RestaurantsScreen = () => {
     return (
-        <SafeAreaView style={[styles.container, { marginTop: StatusBar.currentHeight }]}>
-            <View style={styles.searchCntr}>
+        <SafeArea>
+            <SearchContainer>
                 <Searchbar
                     mode='view'
                 />
-            </View>
-            <View style={styles.listCntr}>
+            </SearchContainer>
+            <ListContainer>
                 <RestaurantInfo />
-            </View>
-        </SafeAreaView>
+            </ListContainer>
+        </SafeArea>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        // give safe area view container ability to completely fill
-        flex: 1
-    },
-    searchCntr: {
-        // backgroundColor: "green",
-    },
-    listCntr: {
-        flex: 1,
-        backgroundColor: "blue",
-    },
-    text: {
-        padding: 20,
-    }
-});
