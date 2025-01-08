@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import { StatusBar, StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
+import { Searchbar } from 'react-native-paper';
+import { RestaurantsScreen } from './src/features/restaurant/screens/restaurants.screen';
 
+// console.log(StatusBar.currentHeight)   //returns null for ios
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <RestaurantsScreen />
+      <ExpoStatusBar style="auto" />
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
 });
