@@ -8,14 +8,15 @@ import styled from 'styled-components/native';
 
 const SafeArea = styled(SafeAreaView)`
     flex: 1;
-    margin-top:${StatusBar.currentHeight}px;
+    ${StatusBar.currentHeight && `margin-top:${StatusBar.currentHeight}px`};
 `
 const SearchContainer = styled.View`
-background-color: green;
+    padding:${(props) => props.theme.space[3]};
+    background-color: ${(props) => props.theme.colors.ui.quaternary};
 `
 const ListContainer = styled.View`
- flex: 1;
- background-color: blue;
+    flex: 1;
+    background-color: ${(props) => props.theme.colors.ui.quaternary};
 `
 
 export const RestaurantsScreen = () => {

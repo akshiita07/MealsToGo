@@ -7,15 +7,18 @@ import styled from 'styled-components/native';
 
 // write as css:
 const Title = styled.Text`
-    padding:16px;
-    fontWeight:bold;
-    fontSize:18px;
+    padding:${(props) => props.theme.space[3]};
+    fontWeight:${(props) => props.theme.fontWeights.bold};
+    fontSize:${(props) => props.theme.fontSizes.title};
+    color:${(props) => props.theme.colors.ui.primary};
+    font-family:${(props) => props.theme.fonts.body};
+    
 `;
 const RestaurantCard = styled(Card)`
-    margin:20px;
+    margin:${(props) => props.theme.space[3]};
 `;
 const RestaurantCardCover = styled(Card.Cover)`
-    backgroundColor:white;
+    backgroundColor:${(props) => props.theme.colors.ui.quaternary};
 `;
 
 export const RestaurantInfo = ({ restaurant = {} }) => {

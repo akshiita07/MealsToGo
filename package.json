@@ -12,7 +12,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@expo-google-fonts/lato": "^0.2.3",
+    "@expo-google-fonts/oswald": "^0.2.3",
     "expo": "~52.0.23",
+    "expo-font": "~13.0.2",
     "expo-status-bar": "~2.0.0",
     "is-arrayish": "^0.3.2",
     "react": "18.3.1",
