@@ -8,8 +8,9 @@ import styled from 'styled-components/native';
 // write as css:
 const Title = styled.Text`
     padding:${(props) => props.theme.space[3]};
-    fontWeight:${(props) => props.theme.fontWeights.bold};
-    fontSize:${(props) => props.theme.fontSizes.title};
+    padding-bottom:${(props) => props.theme.space[0]};
+    font-weight:${(props) => props.theme.fontWeights.bold};
+    font-size:${(props) => props.theme.fontSizes.title};
     color:${(props) => props.theme.colors.ui.primary};
     font-family:${(props) => props.theme.fonts.body};
     
@@ -20,6 +21,13 @@ const RestaurantCard = styled(Card)`
 const RestaurantCardCover = styled(Card.Cover)`
     backgroundColor:${(props) => props.theme.colors.ui.quaternary};
 `;
+const Address = styled(Text)`
+    padding-left:${(props) => props.theme.space[3]};
+    font-weight:${(props) => props.theme.fontWeights.bold};
+    font-size:${(props) => props.theme.fontSizes.body};
+    color:${(props) => props.theme.colors.ui.primary};
+    font-family:${(props) => props.theme.fonts.body};
+`;
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
     // restaurant is the object whoose porperties we want to take:
@@ -29,6 +37,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
         <RestaurantCard elevation={5}>
             <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
             <Title>{name} </Title>
+            <Address>{address} </Address>
         </RestaurantCard>
     )
 }
