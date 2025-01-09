@@ -52,7 +52,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
                 </Rating>
 
                 <OpenIcon>
-                    {isClosed && <Text variant="caption">Closed temporarily</Text>}
+                    {isClosed && <Text variant="error">Closed temporarily</Text>}
                     <IconImage source={{ uri: icon }} ></IconImage>
                 </OpenIcon>
 
