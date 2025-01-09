@@ -12,6 +12,9 @@ import star from '../../../../assets/star'
 // import open isOpen/closed svg:
 import isOpen from '../../../../assets/open'
 
+// spacer:
+import { Spacer } from '../../../components/spacer/spacer.component'
+
 // write as css:
 const Title = styled.Text`
     padding-left:${(props) => props.theme.space[3]};
