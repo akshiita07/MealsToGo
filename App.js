@@ -18,6 +18,11 @@ import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+// for adding icons to bottom navbar:
+import Ionicons from '@expo/vector-icons/Ionicons';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
 function MapScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -53,9 +58,33 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator>
-            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-            <Tab.Screen name="Map" component={MapScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Screen
+              name="Restaurants"
+              component={RestaurantsScreen}
+              options={{
+                tabBarIcon: ({ color, size }) => (
+                  <Ionicons name="fast-food-sharp" size={24} color="black" />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Map"
+              component={MapScreen}
+              options={{
+                tabBarIcon: ({ color, size }) => (
+                  <FontAwesome5 name="map-marked-alt" size={24} color="black" />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Settings"
+              component={SettingsScreen}
+              options={{
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialIcons name="settings" size={24} color="black" />
+                ),
+              }}
+            />
           </Tab.Navigator>
         </NavigationContainer>
       </ThemeProvider>
