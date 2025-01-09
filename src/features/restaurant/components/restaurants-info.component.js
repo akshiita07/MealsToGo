@@ -1,9 +1,4 @@
 ﻿import { React } from 'react'
-import { StatusBar, StyleSheet, Text, View, SafeAreaView, Platform, Image } from 'react-native';
-import { Searchbar, Card } from 'react-native-paper';
-
-// for styling using styled-components:
-import styled from 'styled-components/native';
 
 // svg handling library: expo install react-native-svg
 import { SvgXml } from 'react-native-svg';
@@ -14,72 +9,20 @@ import isOpen from '../../../../assets/open'
 
 // spacer:
 import { Spacer } from '../../../components/spacer/spacer.component'
+// Text:
+import { Text } from '../../../components/typography/text.component'
 
-// write as css:
-const Title = styled.Text`
-    padding-left:${(props) => props.theme.space[3]};
-    padding-top:${(props) => props.theme.space[2]};
-    padding-bottom:${(props) => props.theme.space[0]};
-    font-weight:${(props) => props.theme.fontWeights.bold};
-    font-size:${(props) => props.theme.fontSizes.title};
-    color:${(props) => props.theme.colors.ui.primary};
-    font-family:${(props) => props.theme.fonts.body};
-    
-`;
-const RestaurantCard = styled(Card)`
-    margin:${(props) => props.theme.space[3]};
-`;
-const RestaurantCardCover = styled(Card.Cover)`
-    backgroundColor:${(props) => props.theme.colors.ui.quaternary};
-`;
-const Address = styled(Text)`
-    padding-left:${(props) => props.theme.space[3]};
-    padding-bottom:${(props) => props.theme.space[2]};
-    font-weight:${(props) => props.theme.fontWeights.bold};
-    font-size:${(props) => props.theme.fontSizes.body};
-    color:${(props) => props.theme.colors.ui.primary};
-    font-family:${(props) => props.theme.fonts.body};
-`;
-
-const Rating = styled(View)`
-    flex-direction:row;
-    padding-left:${(props) => props.theme.space[3]};
-    padding-top:${(props) => props.theme.space[1]};
-    padding-bottom:${(props) => props.theme.space[1]};
-`;
-
-const OpenIcon = styled(View)`
-    flex-direction:row;
-    padding-right:${(props) => props.theme.space[3]};
-    align-items:center;
-    gap:10px
-`;
-
-const IsClosedTemp = styled(Text)`
-    flex-direction:row;
-    color:${(props) => props.theme.colors.ui.error};
-    font-weight:${(props) => props.theme.fontWeights.medium};
-    font-size:${(props) => props.theme.fontSizes.body};
-    font-family:${(props) => props.theme.fonts.heading};
-`;
-
-const Row1 = styled(View)`
-    flex-direction:row;
-    justify-content:space-between;  
-    align-items:center;
-    padding-right:${(props) => props.theme.space[3]};
-`;
-
-const Row2 = styled(View)`
-    flex-direction:row;
-    justify-content:space-between;  
-    align-items:center;
-`;
-
-const IconImage = styled(Image)`
-    width:30;
-    height:30;
-`;
+// import all css styles:
+import {
+    RestaurantCard,
+    RestaurantCardCover,
+    Rating,
+    OpenIcon,
+    Row1,
+    Row2,
+    Row3,
+    IconImage
+} from './restaurants-info.styles'
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
     // restaurant is the object whoose porperties we want to take:
@@ -93,7 +36,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
         <RestaurantCard elevation={5}>
             <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
             <Row1>
-                <Title>{name} </Title>
+                <Text variant="title">{name} </Text>
                 {
                     isOpenNow && <SvgXml xml={isOpen} width={30} height={30} />
                     /* whenever isOpenNow = false then do not show this */
@@ -102,19 +45,22 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
             <Row2>
                 <Rating>
                     {
-                        ratingArray.map(() => (
-                            <SvgXml xml={star} width={20} height={20} />
+                        ratingArray.map((_, index) => (
+                            <SvgXml key={`star-${index}`} xml={star} width={25} height={22} />
                         ))
                     }
                 </Rating>
 
                 <OpenIcon>
-                    {isClosed && <IsClosedTemp>Closed temporarily</IsClosedTemp>}
+                    {isClosed && <Text variant="caption">Closed temporarily</Text>}
                     <IconImage source={{ uri: icon }} ></IconImage>
                 </OpenIcon>
 
             </Row2>
-            <Address>{address} </Address>
+
+            <Row3>
+                <Text variant="caption">{address} </Text>
+            </Row3>
         </RestaurantCard>
     )
 }

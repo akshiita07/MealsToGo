@@ -8,7 +8,7 @@ export const fontWeights = {
     regular: 400,
     medium: 500,
     bold: 700,
-
+    bolder: 2000,
 }
 export const fontSizes = {
     caption: "12px",
