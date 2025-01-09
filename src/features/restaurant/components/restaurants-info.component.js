@@ -6,9 +6,6 @@ import { SvgXml } from 'react-native-svg';
 import star from '../../../../assets/star'
 // import open isOpen/closed svg:
 import isOpen from '../../../../assets/open'
-
-// spacer:
-import { Spacer } from '../../../components/spacer/spacer.component'
 // Text:
 import { Text } from '../../../components/typography/text.component'
 

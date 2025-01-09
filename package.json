@@ -14,15 +14,22 @@
   "dependencies": {
     "@expo-google-fonts/lato": "^0.2.3",
     "@expo-google-fonts/oswald": "^0.2.3",
+    "@react-navigation/bottom-tabs": "^7.2.0",
+    "@react-navigation/native": "^7.0.14",
     "expo": "~52.0.23",
     "expo-font": "~13.0.2",
     "expo-status-bar": "~2.0.0",
     "is-arrayish": "^0.3.2",
     "react": "18.3.1",
     "react-native": "0.76.5",
+    "react-native-gesture-handler": "^2.21.2",
+    "react-native-get-random-values": "^1.11.0",
     "react-native-paper": "^5.12.5",
-    "react-native-safe-area-context": "^5.0.0",
+    "react-native-reanimated": "^3.16.6",
+    "react-native-safe-area-context": "^5.1.0",
+    "react-native-screens": "^4.4.0",
     "react-native-svg": "^15.10.1",
+    "react-native-vector-icons": "^10.2.0",
     "styled-components": "^6.1.14"
   },
   "devDependencies": {
