@@ -19,9 +19,12 @@ const ListContainer = styled.View`
     background-color: ${(props) => props.theme.colors.ui.quaternary};
 `
 
-const RestaurantList = styled(FlatList)`
-    background-color: ${(props) => props.theme.colors.ui.quaternary};
-`
+const RestaurantList = styled(FlatList).attrs({
+    contentContainerStyle: {
+        padding: 0,
+
+    }
+})`background-color: ${(props) => props.theme.colors.ui.quaternary};`
 
 export const RestaurantsScreen = () => {
     return (
