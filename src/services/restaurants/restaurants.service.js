@@ -18,7 +18,7 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
 
 // console.log(result)      //will return in format: opening-hours
 // console.log(camelize(result))      //will return in camel case format: openingHours
-const restaurantsTransform = ({ results = [] }) => {
+export const restaurantsTransform = ({ results = [] }) => {
     // 1. results array to be mapped:
     const mappedResults = results.map((restaurant) => {
         return {
