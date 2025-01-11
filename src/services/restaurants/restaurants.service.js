@@ -31,7 +31,7 @@ export const restaurantsTransform = ({ results = [] }) => {
             // photo translations:
         };
     })
-    console.log(mappedResults)
+    // console.log(mappedResults)
     // 1. camel case:
     // const newResult=camelize(results.length)
     return camelize(mappedResults)
