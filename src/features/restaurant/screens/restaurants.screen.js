@@ -27,8 +27,8 @@ const RestaurantList = styled(FlatList).attrs({
 })`background-color: ${(props) => props.theme.colors.ui.quaternary};`
 
 export const RestaurantsScreen = () => {
-    const restaurantContext = useContext(RestaurantContext);
-    console.log(restaurantContext)
+    const { isLoading, error, restaurants } = useContext(RestaurantContext);
+
     return (
         <SafeArea>
             <SearchContainer>
@@ -38,8 +38,14 @@ export const RestaurantsScreen = () => {
             </SearchContainer>
             <RestaurantList
                 // data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }, { name: 6 }, { name: 7 }, { name: 8 }, { name: 9 }, { name: 10 }]}
-                data={restaurantContext.restaurants}
-                renderItem={() => (<RestaurantInfo />)}
+                data={restaurants}
+                renderItem={({ item }) => {
+                    console.log(item)
+                    return (<RestaurantInfo restaurant={item} />)
+                }
+                }
+
+
                 keyExtractor={(item) => item.name}
             // contentContainerStyle={{ padding: 20 }}
             />
