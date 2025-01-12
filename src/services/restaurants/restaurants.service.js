@@ -4,7 +4,7 @@
 import camelize from "camelize"
 
 // added a default location of san fransico in location:
-export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
+export const restaurantsRequest = (location) => {
     // console.log(mocks[location]);   //mock of a location
     // Promise that u will be getting something back in d future
     return new Promise((resolve, reject) => {
@@ -28,6 +28,7 @@ export const restaurantsTransform = ({ results = [] }) => {
             ...restaurant,
             isOpenNow: restaurant.opening_hours?.open_now || false,
             isClosed: restaurant.business_status === "CLOSED_TEMPORARILY",
+            address: restaurant.vicinity
             // photo translations:
         };
     })

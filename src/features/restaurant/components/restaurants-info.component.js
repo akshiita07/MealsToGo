@@ -23,7 +23,7 @@ import {
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
     // restaurant is the object whoose porperties we want to take:
-    const { name = "Some Restaurant", icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png", photos = ["https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg"], address = "#46 Savitry", isOpenNow = true, rating = 4, isClosed = false } = restaurant;
+    const { name = "Some Restaurant", icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png", photos = ["https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg"], address = "#46 Savitry", isOpenNow = true, rating = 4, isClosed = false, placeId } = restaurant;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));      //returns undefined inside array for rating's floor no of times
     // console.log(ratingArray)     //[undefined, undefined, undefined, undefined]
@@ -43,7 +43,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
                 <Rating>
                     {
                         ratingArray.map((_, index) => (
-                            <SvgXml key={`star-${index}`} xml={star} width={25} height={22} />
+                            <SvgXml key={`star-${placeId}-${index}`} xml={star} width={25} height={22} />
                         ))
                     }
                 </Rating>
