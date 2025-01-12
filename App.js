@@ -26,6 +26,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 // SERVICES:
 import { restaurantsRequest } from './src/services/restaurants/restaurants.service'
 import { RestaurantContextProvider } from './src/services/restaurants/restaurants.context'
+import { LocationContextProvider } from './src/services/location/location.context'
 
 function MapScreen() {
   return (
@@ -60,39 +61,41 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantContextProvider>
-          <NavigationContainer>
-            <Tab.Navigator>
-              <Tab.Screen
-                name="Restaurants"
-                component={RestaurantsScreen}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="fast-food-sharp" size={24} color="black" />
-                  ),
-                }}
-              />
-              <Tab.Screen
-                name="Map"
-                component={MapScreen}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <FontAwesome5 name="map-marked-alt" size={24} color="black" />
-                  ),
-                }}
-              />
-              <Tab.Screen
-                name="Settings"
-                component={SettingsScreen}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <MaterialIcons name="settings" size={24} color="black" />
-                  ),
-                }}
-              />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </RestaurantContextProvider>
+        <LocationContextProvider>
+          <RestaurantContextProvider>
+            <NavigationContainer>
+              <Tab.Navigator>
+                <Tab.Screen
+                  name="Restaurants"
+                  component={RestaurantsScreen}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons name="fast-food-sharp" size={24} color="black" />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Map"
+                  component={MapScreen}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <FontAwesome5 name="map-marked-alt" size={24} color="black" />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Settings"
+                  component={SettingsScreen}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <MaterialIcons name="settings" size={24} color="black" />
+                    ),
+                  }}
+                />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </RestaurantContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
