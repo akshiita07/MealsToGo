@@ -1,5 +1,4 @@
 ﻿import React from "react";
-import { View, Text } from "react-native";
 // useTheme hook
 import styled, { useTheme } from "styled-components/native";
 

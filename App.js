@@ -24,7 +24,6 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 // SERVICES:
-import { restaurantsRequest } from './src/services/restaurants/restaurants.service'
 import { RestaurantContextProvider } from './src/services/restaurants/restaurants.context'
 import { LocationContextProvider } from './src/services/location/location.context'
 
