@@ -3,17 +3,31 @@ import { Text } from "react-native"
 import { RestaurantsScreen } from '../../../src/features/restaurant/screens/restaurants.screen';
 
 // as layered stacks: 
-import { createStackNavigator } from "@react-navigation/stack"
+import { createStackNavigator, TransitionPresets } from "@react-navigation/stack"
 
 const RestaurantStack = createStackNavigator()
 
 export const RestaurantNavigator = () => {
     return (
-        <RestaurantStack.Navigator screenOptions={{ headerShown: false }}>
+        <RestaurantStack.Navigator screenOptions=
+            {
+                {
+                    // so that details go from bottom (not left to right default)
+                    ...TransitionPresets.ModalPresentationIOS,
+                    headerShown: false
+                }
+            }>
 
             <RestaurantStack.Screen
                 name="Restaurants"
                 component={RestaurantsScreen}
+            >
+            </RestaurantStack.Screen>
+
+
+            <RestaurantStack.Screen
+                name="RestaurantDetail"
+                component={() => <Text>Details of restaurant</Text>}
             >
             </RestaurantStack.Screen>
 

@@ -1,5 +1,5 @@
 ﻿import React, { useContext } from 'react'
-import { FlatList } from 'react-native';
+import { FlatList, Pressable, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { RestaurantInfo } from '../components/restaurants-info.component'
 import { SafeArea } from '../../../components/utility/safe-area.component';
 
@@ -41,10 +41,12 @@ const LoadingOverlay = styled.View`
   background-color: rgba(255, 255, 255, 0.7);  /* Optional: adds a translucent background */
 `;
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
     const { isLoading, error, restaurants } = useContext(RestaurantContext);
+    // console.log(navigation)
 
     return (
+
         <SafeArea>
             <ListContainer>
                 {isLoading && (
@@ -54,10 +56,13 @@ export const RestaurantsScreen = () => {
                 )}
 
                 <Search />
-
                 <RestaurantList
                     data={restaurants}
-                    renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
+                    renderItem={({ item }) =>
+                        <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail")}>
+                            <RestaurantInfo restaurant={item} />
+                        </TouchableOpacity>
+                    }
                     keyExtractor={(item) => item.name}
                 />
             </ListContainer>
