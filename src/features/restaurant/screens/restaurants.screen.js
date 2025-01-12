@@ -1,6 +1,5 @@
 ﻿import React, { useContext } from 'react'
 import { FlatList } from 'react-native';
-import { Searchbar } from 'react-native-paper';
 import { RestaurantInfo } from '../components/restaurants-info.component'
 import { SafeArea } from '../../../components/utility/safe-area.component';
 
@@ -13,10 +12,9 @@ import { RestaurantContext } from '../../../../src/services/restaurants/restaura
 // whenever loading then show symbol:
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
-const SearchContainer = styled.View`
-    padding:${(props) => props.theme.space[3]};
-    background-color: ${(props) => props.theme.colors.ui.quaternary};
-`
+// search bar:
+import { Search } from '../components/search.component'
+
 const ListContainer = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.colors.ui.quaternary};
@@ -55,9 +53,7 @@ export const RestaurantsScreen = () => {
                     </LoadingOverlay>
                 )}
 
-                <SearchContainer>
-                    <Searchbar mode="view" />
-                </SearchContainer>
+                <Search />
 
                 <RestaurantList
                     data={restaurants}
