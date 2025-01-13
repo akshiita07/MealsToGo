@@ -1,5 +1,5 @@
 ﻿import React from "react"
-import { Text } from "react-native"
+import { RestaurantDetailScreen } from "../../features/restaurant/screens/restaurants-detail.screen"
 import { RestaurantsScreen } from '../../../src/features/restaurant/screens/restaurants.screen';
 
 // as layered stacks: 
@@ -27,7 +27,8 @@ export const RestaurantNavigator = () => {
 
             <RestaurantStack.Screen
                 name="RestaurantDetail"
-                component={() => <Text>Details of restaurant</Text>}
+                // component={() => <Text>Details of restaurant</Text>}
+                component={RestaurantDetailScreen}
             >
             </RestaurantStack.Screen>
 

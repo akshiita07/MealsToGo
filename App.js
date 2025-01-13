@@ -1,4 +1,4 @@
-// yarn expo start -c
+// RUN IN TERMINAL APP: yarn expo start -c
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 
 // theme:
