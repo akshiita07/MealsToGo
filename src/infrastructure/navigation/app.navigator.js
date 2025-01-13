@@ -13,13 +13,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-function MapScreen() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Map!</Text>
-        </View>
-    );
-}
+
+// map rendering here:
+import { MapScreen } from '../../features/map/screens/map.screen'
+// function MapScreen() {
+//     return (
+//         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//             <Text>Map!</Text>
+//         </View>
+//     );
+// }
 
 function SettingsScreen() {
     return (
