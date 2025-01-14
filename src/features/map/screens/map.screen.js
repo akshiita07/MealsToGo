@@ -1,23 +1,63 @@
 ﻿// npx expo install react-native-maps
 // yarn add react-native-maps
 import React, { useContext, useState, useEffect } from 'react';
-import MapView from 'react-native-maps';
-import { StyleSheet, View } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { Search } from '../components/search.component';
+import styled from "styled-components/native";
+
+import { RestaurantContext } from '../../../services/restaurants/restaurants.context'
+import { LocationContext } from '../../../services/location/location.context'
+
+const Map = styled(MapView)`
+    width: 100%;
+    height: 100%;
+`
 
 export const MapScreen = () => {
+
+    // to render out restaurants:
+    const { location } = useContext(LocationContext)
+    const { restaurants = [] } = useContext(RestaurantContext)
+
+    // to figure out where to render map markers:
+    const [latDelta, setLatDelta] = useState(0);
+    // "viewport": { "northeast": {"lat":,"lng":},"southwest": {"lat":"lng":}}
+    const { lat, lng, viewport } = location;
+
+    // console.log(viewport)
+    // console.log(viewport.northeast)
+
+    useEffect(() => {
+        const northEastLat = viewport.northeast.lat;
+        const southWestLat = viewport.southwest.lat;
+        const calculatedLatDelta = northEastLat - southWestLat
+        setLatDelta(calculatedLatDelta)
+    }, [location, viewport])
+
     return (
-        <View style={styles.container}>
-            <MapView style={styles.map} />
-        </View>
+        <>
+            <Search />
+            <Map
+                region={{
+                    latitude: lat,
+                    longitude: lng,
+                    latitudeDelta: latDelta,
+                    longitudeDelta: 0.02,    //a default zoom view of 0.02
+                }}
+            >
+                {restaurants.map((restaurant) => {
+                    return <Marker
+                        key={restaurant.name}
+                        title={restaurant.name}
+                        coordinate={{
+                            latitude: restaurant.geometry.location.lat,
+                            longitude: restaurant.geometry.location.lng,
+                        }}
+                    >
+
+                    </Marker>;
+                })}
+            </Map>
+        </>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    map: {
-        width: '100%',
-        height: '100%',
-    },
-});

@@ -4,7 +4,7 @@ import { Searchbar } from 'react-native-paper';
 import styled from 'styled-components/native';
 
 const SearchContainer = styled.View`
-    padding:${(props) => props.theme.space[3]};
+    padding:${(props) => props.theme.space[2]};
     background-color: ${(props) => props.theme.colors.ui.quaternary};
 `
 import { LocationContext } from '../../../services/location/location.context'
@@ -19,7 +19,6 @@ export const Search = () => {
     useEffect(() => {
         search(searchKeyword);
     }, [])
-
     useEffect(() => {
         setSearchKeyword(keyword);
     }, [keyword])
@@ -29,6 +28,7 @@ export const Search = () => {
             <Searchbar
                 mode="view"
                 placeholder="Search for a location"
+                icon="map"
                 value={searchKeyword}
                 onSubmitEditing={() => {
                     search(searchKeyword)
