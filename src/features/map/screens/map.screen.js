@@ -5,7 +5,7 @@ import { MapCallout } from '../components/map-callout.component';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { TouchableOpacity } from 'react-native';
 import { Search } from '../components/search.component';
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 import { RestaurantContext } from '../../../services/restaurants/restaurants.context'
 import { LocationContext } from '../../../services/location/location.context'
@@ -57,10 +57,13 @@ export const MapScreen = ({ navigation }) => {
                             longitude: restaurant.geometry.location.lng,
                         }}
                     >
-                        <Callout onPress={() =>
-                            navigation.navigate("RestaurantDetail", {
-                                restaurant: restaurant,
-                            })
+                        <Callout onPress={() => {
+                            console.log("I was pressed")
+                            navigation.navigate("Restaurants", {
+                                screen: "RestaurantDetail",
+                                params: { restaurant },
+                            });
+                        }
                         }
                         >
                             <MapCallout
