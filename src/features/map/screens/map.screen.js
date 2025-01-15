@@ -1,7 +1,9 @@
 ﻿// npx expo install react-native-maps
 // yarn add react-native-maps
 import React, { useContext, useState, useEffect } from 'react';
-import MapView, { Marker } from 'react-native-maps';
+import { MapCallout } from '../components/map-callout.component';
+import MapView, { Marker, Callout } from 'react-native-maps';
+import { TouchableOpacity } from 'react-native';
 import { Search } from '../components/search.component';
 import styled from "styled-components/native";
 
@@ -13,7 +15,8 @@ const Map = styled(MapView)`
     height: 100%;
 `
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }) => {
+    // console.log(navigation)
 
     // to render out restaurants:
     const { location } = useContext(LocationContext)
@@ -54,10 +57,23 @@ export const MapScreen = () => {
                             longitude: restaurant.geometry.location.lng,
                         }}
                     >
+                        <Callout onPress={() =>
+                            navigation.navigate("RestaurantDetail", {
+                                restaurant: restaurant,
+                            })
+                        }
+                        >
+                            <MapCallout
+                                restaurant={restaurant}
+                            >
+
+                            </MapCallout>
+
+                        </Callout>
 
                     </Marker>;
                 })}
-            </Map>
+            </Map >
         </>
     );
 }

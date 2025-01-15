@@ -4,7 +4,7 @@ import { RestaurantInfo } from '../components/restaurants-info.component'
 import { SafeArea } from '../../../components/utility/safe-area.component'
 import { List } from 'react-native-paper';
 
-export const RestaurantDetailScreen = ({ route }) => {
+export const RestaurantDetailScreen = ({ navigation, route }) => {
     const restaurant = route.params.restaurant;
 
     // for menu:
