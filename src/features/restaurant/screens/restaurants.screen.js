@@ -1,4 +1,4 @@
-﻿import React, { useContext } from 'react'
+﻿import React, { useContext, useState } from 'react'
 import { FlatList, Pressable, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { RestaurantInfo } from '../components/restaurants-info.component'
 import { SafeArea } from '../../../components/utility/safe-area.component';
@@ -9,6 +9,7 @@ import styled from 'styled-components/native';
 // service:
 import { RestaurantContext } from '../../../../src/services/restaurants/restaurants.context'
 import { FavouritesContext } from '../../../../src/services/favourites/favourites.context'
+import { FavouritesBar } from '../../../../src/components/favourites/favourites-bar.component'
 
 // whenever loading then show symbol:
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
@@ -47,6 +48,7 @@ export const RestaurantsScreen = ({ navigation }) => {
     // console.log(navigation)
     const { favourites } = useContext(FavouritesContext);
     // console.log(favourites)
+    const [isToggled, setAsToggled] = useState(false)
 
     return (
 
@@ -58,7 +60,17 @@ export const RestaurantsScreen = ({ navigation }) => {
                     </LoadingOverlay>
                 )}
 
-                <Search />
+                <Search
+                    isFavouritesToggled={isToggled}
+                    onFavouritesToggle={
+                        // invert is toggled whenever it is clicked
+                        () => setAsToggled(!isToggled)
+                    } />
+
+                {
+                    isToggled && <FavouritesBar />
+                }
+
                 <RestaurantList
                     data={restaurants}
                     renderItem={({ item }) =>

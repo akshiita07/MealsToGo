@@ -9,7 +9,7 @@ const SearchContainer = styled.View`
 `
 import { LocationContext } from '../../../services/location/location.context'
 
-export const Search = () => {
+export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
     // locationContext has search feature in it:
     const { keyword, search } = useContext(LocationContext)
     // console.log(locationContext)
@@ -27,6 +27,8 @@ export const Search = () => {
     return (
         <SearchContainer>
             <Searchbar
+                icon={isFavouritesToggled ? "heart" : "heart-outline"}
+                onIconPress={onFavouritesToggle}
                 mode="view"
                 placeholder="Search for a location"
                 value={searchKeyword}
