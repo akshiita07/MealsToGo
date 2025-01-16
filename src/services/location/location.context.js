@@ -19,15 +19,15 @@ export const LocationContextProvider = ({ children }) => {
             setIsLoading(false);
             return;
         }
-        console.log(searchKeyword)
+        // console.log(searchKeyword)
         locationRequest(searchKeyword.toLowerCase()).then(locationTransform).then(result => {
             setLocation(result);
-            console.log(result);
+            // console.log(result);
             setIsLoading(false);
         }).catch(error => {
             setIsLoading(false);
             setError(error);
-            console.log(error)
+            // console.log(error)
         })
     }
 

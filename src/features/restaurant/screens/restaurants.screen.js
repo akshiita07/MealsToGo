@@ -46,7 +46,7 @@ export const RestaurantsScreen = ({ navigation }) => {
     const { isLoading, error, restaurants } = useContext(RestaurantContext);
     // console.log(navigation)
     const { favourites } = useContext(FavouritesContext);
-    console.log(favourites)
+    // console.log(favourites)
 
     return (
 

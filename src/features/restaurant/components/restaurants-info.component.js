@@ -33,7 +33,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     return (
         // <Text>Restaurant Name: {name}</Text>
         <RestaurantCard elevation={5}>
-            <Favourite />
+            <Favourite restaurant={restaurant} />
             <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
             <Row1>
                 <Text variant="title">{name} </Text>
