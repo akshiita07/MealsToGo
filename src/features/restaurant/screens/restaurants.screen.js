@@ -8,6 +8,7 @@ import styled from 'styled-components/native';
 
 // service:
 import { RestaurantContext } from '../../../../src/services/restaurants/restaurants.context'
+import { FavouritesContext } from '../../../../src/services/favourites/favourites.context'
 
 // whenever loading then show symbol:
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
@@ -44,6 +45,8 @@ const LoadingOverlay = styled.View`
 export const RestaurantsScreen = ({ navigation }) => {
     const { isLoading, error, restaurants } = useContext(RestaurantContext);
     // console.log(navigation)
+    const { favourites } = useContext(FavouritesContext);
+    console.log(favourites)
 
     return (
 

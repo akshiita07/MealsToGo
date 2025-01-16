@@ -2,7 +2,7 @@
 
 export const FavouritesContext = createContext();
 
-export const FavouritesContextProvider = createContext = ({ children }) => {
+export const FavouritesContextProvider = ({ children }) => {
 
     const [favourites, setFavourites] = useState([]);      //empty array initially as we dont have favourites when we initially load our apps
 

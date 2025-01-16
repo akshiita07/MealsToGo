@@ -13,6 +13,7 @@ import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 // SERVICES:
 import { RestaurantContextProvider } from './src/services/restaurants/restaurants.context'
 import { LocationContextProvider } from './src/services/location/location.context'
+import { FavouritesContextProvider } from './src/services/favourites/favourites.context'
 
 // navigator:
 import { Navigation } from './src/infrastructure/navigation/index'
@@ -32,13 +33,15 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantContextProvider>
-            <Navigation>
+        <FavouritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantContextProvider>
+              <Navigation>
 
-            </Navigation>
-          </RestaurantContextProvider>
-        </LocationContextProvider>
+              </Navigation>
+            </RestaurantContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider >
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
