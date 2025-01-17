@@ -68,7 +68,7 @@ export const RestaurantsScreen = ({ navigation }) => {
                     } />
 
                 {
-                    isToggled && <FavouritesBar />
+                    isToggled && <FavouritesBar favourites={favourites} />
                 }
 
                 <RestaurantList
