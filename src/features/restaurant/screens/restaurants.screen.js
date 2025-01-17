@@ -68,7 +68,7 @@ export const RestaurantsScreen = ({ navigation }) => {
                     } />
 
                 {
-                    isToggled && <FavouritesBar favourites={favourites} />
+                    isToggled && <FavouritesBar favourites={favourites} onNavigate={navigation.navigate} />
                 }
 
                 <RestaurantList
