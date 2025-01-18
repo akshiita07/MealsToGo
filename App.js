@@ -36,13 +36,6 @@ const firebaseConfig = {
   // messagingSenderId: process.env.FIREBASE_SENDER_ID,
   // appId: process.env.FIREBASE_APP_ID,
   // measurementId: process.env.FIREBASE_MEASUREMENT_ID
-  apiKey: "AIzaSyCCJiM_9jcLCfKF2YU116ycxTSeUS9VyOQ",
-  authDomain: "mealstogo-33c47.firebaseapp.com",
-  projectId: "mealstogo-33c47",
-  storageBucket: "mealstogo-33c47.firebasestorage.app",
-  messagingSenderId: "895205518097",
-  appId: "1:895205518097:web:622494341faaade1d3fab0",
-  measurementId: "G-B2FJLM3B18"
 };
 
 // if (!firebase.apps.length) {
