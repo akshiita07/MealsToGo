@@ -51,6 +51,6 @@ export const Row3 = styled(View)`
 `;
 
 export const IconImage = styled(Image)`
-    width:30;
-    height:30;
+    width:30px;
+    height:30px;
 `;

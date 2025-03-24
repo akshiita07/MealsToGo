@@ -19,51 +19,42 @@ import { FavouritesContextProvider } from './src/services/favourites/favourites.
 // navigator:
 import { Navigation } from './src/infrastructure/navigation/index'
 
+//authentication firebase:
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context"
+
 //ENV:  yarn add react-native-dotenv
 
 // FIREBASE: npx expo install firebase
-// import * as firebase from "firebase";
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-// console.log(process.env.FIREBASE_API_KEY)
 
-// Initialize Firebase
 const firebaseConfig = {
-  // apiKey: process.env.FIREBASE_API_KEY,
-  // authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  // projectId: process.env.FIREBASE_PROJECT_ID,
-  // storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  // messagingSenderId: process.env.FIREBASE_SENDER_ID,
-  // appId: process.env.FIREBASE_APP_ID,
-  // measurementId: process.env.FIREBASE_MEASUREMENT_ID
-  apiKey: "AIzaSyCCJiM_9jcLCfKF2YU116ycxTSeUS9VyOQ",
-  authDomain: "mealstogo-33c47.firebaseapp.com",
-  projectId: "mealstogo-33c47",
-  storageBucket: "mealstogo-33c47.firebasestorage.app",
-  messagingSenderId: "895205518097",
-  appId: "1:895205518097:web:622494341faaade1d3fab0",
-  measurementId: "G-B2FJLM3B18"
+  apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID
+  // apiKey: "AIzaSyCCJiM_9jcLCfKF2YU116ycxTSeUS9VyOQ",
+  // authDomain: "mealstogo-33c47.firebaseapp.com",
+  // projectId: "mealstogo-33c47",
+  // storageBucket: "mealstogo-33c47.firebasestorage.app",
+  // messagingSenderId: "895205518097",
+  // appId: "1:895205518097:web:622494341faaade1d3fab0",
+  // measurementId: "G-B2FJLM3B18"
 };
 
-// if (!firebase.apps.length) {
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-// }
+console.log("from env file api key= " + process.env.EXPO_PUBLIC_FIREBASE_API_KEY)
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
 // console.log(StatusBar.currentHeight)   //returns null for ios
 export default function App() {
-
-  // firebase authentication:
-  const [isAuthenticated, setAsAuthenticated] = useState(false)
-  useEffect(() => {
-    signInWithEmailAndPassword(auth, "pathakshita07@gmail.com", process.env.FIREBASE_PASSWORD).then((user) => {
-      console.log(user)
-      setAsAuthenticated(user)
-    }).catch((e) => {
-      console.log(e)
-    })
-  }, [])
 
   // load fonts here:
   const [oswaldLoaded] = useOswald({
@@ -78,15 +69,17 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantContextProvider>
-              <Navigation>
+        <AuthenticationContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantContextProvider>
+                <Navigation>
 
-              </Navigation>
-            </RestaurantContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider >
+                </Navigation>
+              </RestaurantContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider >
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
