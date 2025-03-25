@@ -26,8 +26,8 @@ import { AuthenticationContextProvider } from "./src/services/authentication/aut
 
 // FIREBASE: npx expo install firebase
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth } from "firebase/auth";  // For authentication
+import { getFirestore } from "firebase/firestore";  // If using Firestore
 
 const firebaseConfig = {
   // apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
@@ -50,8 +50,8 @@ console.log("from env file api key= " + process.env.EXPO_PUBLIC_FIREBASE_API_KEY
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 // console.log(StatusBar.currentHeight)   //returns null for ios
 export default function App() {
