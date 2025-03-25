@@ -1,11 +1,11 @@
 ﻿import React, { useState, useContext } from "react";
-import { AccountBackground, AccountCover, AccountContainer, AuthButton, AuthInput } from '../components/account.styles';
+import { AccountBackground, AccountCover, AccountContainer, AuthButton, AuthInput, Title } from '../components/account.styles';
 import { Spacer } from '../../../components/spacer/spacer.component';
 import { Text } from "../../../components/typography/text.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,6 +15,9 @@ export const LoginScreen = () => {
     return (
         <AccountBackground>
             <AccountCover>
+                <Title>
+                    Meals To Go!
+                </Title>
                 <AccountContainer>
                     <AuthInput
                         label="Email"
@@ -60,7 +63,22 @@ export const LoginScreen = () => {
                             Login
                         </AuthButton>
                     </Spacer>
+
                 </AccountContainer>
+
+                <Spacer size="large">
+                    <AuthButton
+                        icon="arrow-collapse-left"
+                        mode="contained"
+                        onPress={() => {
+                            console.log("Back button pressed");
+                            //go back:
+                            navigation.goBack();
+                        }}
+                    >
+                        Back
+                    </AuthButton>
+                </Spacer>
             </AccountCover>
         </AccountBackground >
     )

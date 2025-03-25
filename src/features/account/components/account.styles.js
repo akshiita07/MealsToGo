@@ -1,4 +1,5 @@
 ﻿import styled from "styled-components/native";
+import { Text } from "../../../components/typography/text.component";
 import { colors } from "../../../infrastructure/theme/colors";
 import { Button } from "react-native-paper";
 import { TextInput } from 'react-native-paper';
@@ -34,7 +35,14 @@ export const AuthButton = styled(Button).attrs({
 padding: ${(props) => props.theme.space[1]};
 `;
 
-// add text input:
+// add text input from react native paper:
 export const AuthInput = styled(TextInput)`
     width: 300px;
+`;
+
+// add title component:
+export const Title = styled(Text).attrs({
+    variant: "title",
+})`
+    font-size: 30px;
 `;
