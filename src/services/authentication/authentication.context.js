@@ -1,7 +1,7 @@
-﻿import React, { useState, createContext } from "react";
+﻿import React, { useState, useEffect, createContext } from "react";
 import { loginRequest } from "./authentication.service";
 import firebase from "firebase/compat/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"; // ✅ Import Firebase Auth methods
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 
 export const AuthenticationContext = createContext();
@@ -10,6 +10,17 @@ export const AuthenticationContextProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
+
+    // when i reload i want current user session to remain active so use firebase hook:
+    const auth = getAuth();
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setIsLoading(false); // ✅ Set loading false after user state check
+        });
+
+        return unsubscribe; // ✅ Properly cleanup listener
+    }, []);
 
     //function for log in
     const onLogin = (email, password) => {
@@ -46,6 +57,17 @@ export const AuthenticationContextProvider = ({ children }) => {
             });
     };
 
+    // a log out function:
+    const onLogout = () => {
+        signOut(auth)
+            .then(() => {
+                setUser(null);
+            })
+            .catch((err) => {
+                setError(err.message);
+            });
+    };
+
     return (
         <AuthenticationContext.Provider
             value={{
@@ -55,6 +77,7 @@ export const AuthenticationContextProvider = ({ children }) => {
                 error,
                 onLogin,
                 onRegister,
+                onLogout,
             }}>
             {children}
         </AuthenticationContext.Provider>

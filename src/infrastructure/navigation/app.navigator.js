@@ -1,7 +1,8 @@
-﻿import React from "react"
-import { Text, View } from 'react-native';
-
+﻿import React, { useContext } from "react"
+import { Text, View, SafeAreaView } from 'react-native';
+import { Button } from "react-native-paper";
 import { RestaurantNavigator } from './restaurants.navigator'
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 // NAVIGATION:
 // yarn add @react-navigation/native
@@ -15,6 +16,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 // map rendering here:
 import { MapScreen } from '../../features/map/screens/map.screen'
+import { SafeArea } from "../../components/utility/safe-area.component";
 // function MapScreen() {
 //     return (
 //         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -24,10 +26,13 @@ import { MapScreen } from '../../features/map/screens/map.screen'
 // }
 
 function SettingsScreen() {
+    const { onLogout } = useContext(AuthenticationContext);
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Text>Settings!</Text>
-        </View>
+            <Button icon="logout" onPress={() => { console.log("User wants to log out"); onLogout(); }}>Logout</Button>
+
+        </SafeAreaView>
     );
 }
 
