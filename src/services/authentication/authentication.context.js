@@ -7,7 +7,7 @@ import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWith
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
 
@@ -39,7 +39,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     //function for register
     const onRegister = (email, password, repeatedPassword) => {
         // firebase method to create a user:
-        const auth = getAuth();
+        // const auth = getAuth();
         if (password !== repeatedPassword) {
             setError("Error: Passwords do not match");
             return;
