@@ -1,5 +1,5 @@
 ﻿import React, { useState, useContext } from "react";
-import { AccountBackground, AccountCover, AccountContainer, AuthButton, AuthInput, Title } from '../components/account.styles';
+import { AccountBackground, AccountCover, AccountContainer, AuthButton, AuthInput, Title, ErrorContainer } from '../components/account.styles';
 import { Spacer } from '../../../components/spacer/spacer.component';
 import { Text } from "../../../components/typography/text.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
@@ -36,20 +36,21 @@ export const LoginScreen = ({ navigation }) => {
                             textContentType="password"
                             secureTextEntry //to get password as circles
                             autoCapitalize="none"
-                            secure
                             onChangeText={p => setPassword(p)}
                         >
                         </AuthInput>
                     </Spacer>
 
-                    {error && (<Spacer size="large">
-                        <Text variant="error">
-                            {
-                                // error is in d form of array
-                                error
-                            }
-                        </Text>
-                    </Spacer>)}
+                    <ErrorContainer>
+                        {error && (<Spacer size="large">
+                            <Text variant="error">
+                                {
+                                    // error is in d form of array
+                                    error
+                                }
+                            </Text>
+                        </Spacer>)}
+                    </ErrorContainer>
 
                     <Spacer size="large">
                         <AuthButton
