@@ -1,5 +1,5 @@
 ﻿// Entry point for authentication service
-
+import { React, useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -7,17 +7,19 @@ import firebase from "firebase/compat/app";
 
 
 // firebase authentication:
-const loginRequest = (email, password) =>
+export const loginRequest = (email, password) =>
     firebase.auth().signInWithEmailAndPassword(email, password)
 
-// const auth = getAuth();
-// signInWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//   });
+// const [isAuthenticated, setIsAuthenticated] = useState(false);
+// useEffect(() => {
+//     setTimeout(() => {
+//         signInWithEmailAndPassword(auth, "pathakshita07@gmail.com", process.env.EXPO_PUBLIC_FIREBASE_PASSWORD)
+//             .then((userCredential) => {
+//                 console.log(userCredential);
+//                 setIsAuthenticated(true);
+//             })
+//             .catch((error) => {
+//                 console.log(error);
+//             });
+//     }, 2000);
+// }, []);

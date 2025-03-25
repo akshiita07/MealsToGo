@@ -17,7 +17,7 @@ export const AccountScreen = ({ navigation }) => {
                         Login
                     </AuthButton>
                     <Spacer size="large">
-                        <AuthButton icon="lock-open-outline" mode="contained" onPress={() => {
+                        <AuthButton icon="email" mode="contained" onPress={() => {
                             console.log("Register Button Pressed");
                             navigation.navigate("Register");
                         }
