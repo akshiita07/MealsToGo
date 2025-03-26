@@ -1,5 +1,5 @@
 ﻿import React, { useContext, useState } from 'react'
-import { FlatList, Pressable, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { RestaurantInfo } from '../components/restaurants-info.component'
 import { SafeArea } from '../../../components/utility/safe-area.component';
 
@@ -16,6 +16,9 @@ import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 // search bar:
 import { Search } from '../components/search.component'
+
+// for animations:
+import { FadeInView } from '../../../components/animations/fade.animation'
 
 const ListContainer = styled.View`
   flex: 1;
@@ -71,12 +74,14 @@ export const RestaurantsScreen = ({ navigation }) => {
                         <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail", {
                             restaurant: item,
                         })}>
-                            <RestaurantInfo restaurant={item} />
+                            <FadeInView>
+                                <RestaurantInfo restaurant={item} />
+                            </FadeInView>
                         </TouchableOpacity>
                     }
                     keyExtractor={(item) => item.name}
                 />
             </ListContainer>
-        </SafeArea>
+        </SafeArea >
     );
 };
