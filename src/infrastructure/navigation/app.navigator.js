@@ -36,7 +36,7 @@ function SettingsScreen() {
     const { onLogout } = useContext(AuthenticationContext);
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Settings!</Text>
+            {/* <Text>Settings!</Text> */}
             <Button icon="logout" onPress={() => { console.log("User wants to log out"); onLogout(); }}>Logout</Button>
 
         </SafeAreaView>

@@ -14,6 +14,7 @@ export const FavouritesContextProvider = ({ children }) => {
     const saveFavourites = async (value, uid) => {
         try {
             const jsonValue = JSON.stringify(value);
+            // user object has uid as its user id
             await AsyncStorage.setItem(`@favourites-${uid}`, jsonValue);
             // add user identifier to link with favourites
         } catch (e) {
@@ -35,13 +36,12 @@ export const FavouritesContextProvider = ({ children }) => {
         }
     };
 
+    useEffect(() => {
+        console.log("User object:", user);
+    }, [user]);
+
+
     // to load the initial favourites:
-    // + reload favourites according to user session
-    // useEffect(() => {
-    //     if (user && user.uid) {
-    //         loadFavourites(user.uid)
-    //     }
-    // }, [user])
     useEffect(() => {
         if (user?.uid) {
             loadFavourites(user.uid);
@@ -49,24 +49,11 @@ export const FavouritesContextProvider = ({ children }) => {
     }, [user]);
 
 
-    // useEffect(() => {
-    //     if (user && user.uid && favourites.length) {
-    //         saveFavourites(favourites, user.uid)
-    //     }
-    // }, [favourites, user])
     useEffect(() => {
         if (user?.uid && favourites.length) {
             saveFavourites(favourites, user.uid);
         }
     }, [favourites, user]);
-
-    // useEffect(() => {
-    //     if (user?.uid) {
-    //         loadFavourites(user.uid);
-    //     } else {
-    //         setFavourites([]); // Clear favourites when no user is logged in
-    //     }
-    // }, [user]);
 
     // debgugging log:
     // useEffect(() => {
