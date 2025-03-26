@@ -1,6 +1,4 @@
 ﻿import React, { useContext } from "react"
-import { Text, View, SafeAreaView } from 'react-native';
-import { Button } from "react-native-paper";
 import { RestaurantNavigator } from './restaurants.navigator'
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
@@ -31,17 +29,8 @@ import { RestaurantContextProvider } from '../../services/restaurants/restaurant
 import { LocationContextProvider } from '../../services/location/location.context'
 import { FavouritesContextProvider } from '../../services/favourites/favourites.context'
 
-
-function SettingsScreen() {
-    const { onLogout } = useContext(AuthenticationContext);
-    return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            {/* <Text>Settings!</Text> */}
-            <Button icon="logout" onPress={() => { console.log("User wants to log out"); onLogout(); }}>Logout</Button>
-
-        </SafeAreaView>
-    );
-}
+// import settings screen:
+import { SettingsScreen } from "../../features/settings/screens/settings.screen"
 
 const Tab = createBottomTabNavigator();
 
