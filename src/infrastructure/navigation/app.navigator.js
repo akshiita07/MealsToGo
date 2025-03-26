@@ -25,6 +25,13 @@ import { SafeArea } from "../../components/utility/safe-area.component";
 //     );
 // }
 
+
+// SERVICES:
+import { RestaurantContextProvider } from '../../services/restaurants/restaurants.context'
+import { LocationContextProvider } from '../../services/location/location.context'
+import { FavouritesContextProvider } from '../../services/favourites/favourites.context'
+
+
 function SettingsScreen() {
     const { onLogout } = useContext(AuthenticationContext);
     return (
@@ -40,34 +47,43 @@ const Tab = createBottomTabNavigator();
 
 export const AppNavigator = () => {
     return (
-        <Tab.Navigator>
-            <Tab.Screen
-                name="Restaurants"
-                component={RestaurantNavigator}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="fast-food-sharp" size={24} color="black" />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Map"
-                component={MapScreen}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="map-marked-alt" size={24} color="black" />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Settings"
-                component={SettingsScreen}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <MaterialIcons name="settings" size={24} color="black" />
-                    ),
-                }}
-            />
-        </Tab.Navigator>
+
+        <FavouritesContextProvider>
+            <LocationContextProvider>
+                <RestaurantContextProvider>
+
+                    <Tab.Navigator>
+                        <Tab.Screen
+                            name="Restaurants"
+                            component={RestaurantNavigator}
+                            options={{
+                                tabBarIcon: ({ color, size }) => (
+                                    <Ionicons name="fast-food-sharp" size={24} color="black" />
+                                ),
+                            }}
+                        />
+                        <Tab.Screen
+                            name="Map"
+                            component={MapScreen}
+                            options={{
+                                tabBarIcon: ({ color, size }) => (
+                                    <FontAwesome5 name="map-marked-alt" size={24} color="black" />
+                                ),
+                            }}
+                        />
+                        <Tab.Screen
+                            name="Settings"
+                            component={SettingsScreen}
+                            options={{
+                                tabBarIcon: ({ color, size }) => (
+                                    <MaterialIcons name="settings" size={24} color="black" />
+                                ),
+                            }}
+                        />
+                    </Tab.Navigator>
+
+                </RestaurantContextProvider>
+            </LocationContextProvider>
+        </FavouritesContextProvider >
     )
 }

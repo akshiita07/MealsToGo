@@ -14,9 +14,12 @@ export const Navigation = () => {
     return (
 
         <NavigationContainer>
-            {isAuthenticated ? (<AppNavigator></AppNavigator>) : (
-                <AccountNavigator></AccountNavigator>
-            )}
+            {
+                // if user is authenticated then go to app else keep on showing login/register account page
+                isAuthenticated ? (<AppNavigator></AppNavigator>) : (
+                    <AccountNavigator></AccountNavigator>
+                )
+            }
 
         </NavigationContainer>
     )
