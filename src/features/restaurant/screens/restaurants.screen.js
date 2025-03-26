@@ -22,13 +22,7 @@ const ListContainer = styled.View`
   background-color: ${(props) => props.theme.colors.ui.quaternary};
 `
 
-const RestaurantList = styled(FlatList).attrs({
-    contentContainerStyle: {
-        padding: 0,
-    },
-})`
-  background-color: ${(props) => props.theme.colors.ui.quaternary};
-`;
+import { RestaurantList } from '../components/restaurant-list.styles.js'
 
 const LoadingOverlay = styled.View`
   flex: 1;
