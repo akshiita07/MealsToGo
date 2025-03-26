@@ -2,12 +2,30 @@
 import { ImageBackground } from 'react-native';
 import { Spacer } from '../../../components/spacer/spacer.component';
 
-import { AccountBackground, AccountCover, AccountContainer, AuthButton, Title } from '../components/account.styles';
+import { AccountBackground, AccountCover, AccountContainer, AuthButton, Title, AnimationWrapper } from '../components/account.styles';
+
+// for adding watermelon animation from lottie react native expo:
+// npx expo install lottie-react-native
+import LottieView from 'lottie-react-native';
 
 export const AccountScreen = ({ navigation }) => {
     return (
         <AccountBackground>
             <AccountCover>
+                <AnimationWrapper>
+                    {/* Add animation here: */}
+                    <LottieView
+                        key="animation"
+                        autoPlay
+                        loop
+                        resizeMode="cover"
+                        style={{
+                            width: 300,
+                            height: 100,
+                        }}
+                        source={require("../../../../assets/watermelon.json")}
+                    />
+                </AnimationWrapper>
                 <Title>
                     Meals To Go!
                 </Title>
