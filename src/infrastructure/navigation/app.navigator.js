@@ -30,7 +30,7 @@ import { LocationContextProvider } from '../../services/location/location.contex
 import { FavouritesContextProvider } from '../../services/favourites/favourites.context'
 
 // import settings screen:
-import { SettingsScreen } from "../../features/settings/screens/settings.screen"
+import { SettingsNavigator } from "./settings.navigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -62,7 +62,7 @@ export const AppNavigator = () => {
                         />
                         <Tab.Screen
                             name="Settings"
-                            component={SettingsScreen}
+                            component={SettingsNavigator}
                             options={{
                                 tabBarIcon: ({ color, size }) => (
                                     <MaterialIcons name="settings" size={24} color="black" />

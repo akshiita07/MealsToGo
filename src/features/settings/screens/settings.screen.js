@@ -9,7 +9,7 @@ export const SettingsScreen = ({ navigation }) => {
     const { onLogout } = useContext(AuthenticationContext);
 
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <SafeAreaView >
             <List.Section>
                 {/* add favourites button */}
                 <List.Item
@@ -17,6 +17,7 @@ export const SettingsScreen = ({ navigation }) => {
                         padding: 16
                     }}
                     title="Favourites"
+                    description="View your favourites"
                     left={(props) => <List.Icon {...props} color="black" icon="heart" />}
                     onPress={() => { console.log("User wants to view favourites"); navigation.navigate("Favourites"); }}>
                 </List.Item>
