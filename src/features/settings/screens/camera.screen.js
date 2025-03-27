@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef } from "react";
+﻿import React, { useState, useRef, useContext } from "react";
 import { Button, View, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Text } from "../../../components/typography/text.component";
 // npx expo install expo-camera
@@ -6,13 +6,18 @@ import { useCameraPermissions } from 'expo-camera';
 
 import { ProfileCamera } from "../components/camera.styles"
 
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+
+// to store images:
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const CameraScreen = ({ navigation }) => {
 
+    const { user } = useContext(AuthenticationContext);
     const cameraRef = useRef();
 
     // get permissions:
-    const [facing, setFacing] = useState('back');
+    const [facing, setFacing] = useState('front');
 
     const [permission, requestPermission] = useCameraPermissions();
 
@@ -35,8 +40,10 @@ export const CameraScreen = ({ navigation }) => {
         // take picture
         if (cameraRef) {
             const photo = await cameraRef.current.takePictureAsync();
-            console.log(photo);
+            // console.log(photo);
             // returns height,uri,width where uri is the location where image is stored locally
+            AsyncStorage.setItem(`${user.uid}-photo`, photo.uri);
+            // user id-photo & its location
         }
     };
 
