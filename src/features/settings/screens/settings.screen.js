@@ -1,5 +1,5 @@
 ﻿import React, { useContext } from "react";
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, TouchableOpacity } from 'react-native';
 import { Avatar, List } from "react-native-paper";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -8,19 +8,24 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 
 import { SettingsItem, AvatarContainer } from "../components/settings.style";
 
+// camera:
+
+
 export const SettingsScreen = ({ navigation }) => {
     const { onLogout, user } = useContext(AuthenticationContext);
 
     return (
         <SafeAreaView >
             <AvatarContainer>
-                <Avatar.Icon
-                    size={150}
-                    icon="human"
-                    backgroundColor="#2182BD"
-                >
-
-                </Avatar.Icon>
+                {/* Here in the icon i want to show camera image */}
+                <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+                    <Avatar.Icon
+                        size={150}
+                        icon="human"
+                        backgroundColor="#2182BD"
+                    >
+                    </Avatar.Icon>
+                </TouchableOpacity>
 
                 <Spacer position="top" size="large">
                     <Text variant="label" style={{ textAlign: 'center' }}>

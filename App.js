@@ -74,3 +74,8 @@ export default function App() {
     </>
   );
 }
+
+// STEPS TO PUBLISH APP ON EXPO: app visible under Projects on https://expo.dev/accounts/akshitapathak
+// 1. npm install -g eas-cli
+// 2. eas update:configure
+// 3. eas update
