@@ -1,8 +1,8 @@
-﻿import React, { useState, useRef, useEffect } from "react";
+﻿import React, { useState, useRef } from "react";
 import { Button, View, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Text } from "../../../components/typography/text.component";
 // npx expo install expo-camera
-import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
+import { useCameraPermissions } from 'expo-camera';
 
 import { ProfileCamera } from "../components/camera.styles"
 
@@ -31,6 +31,15 @@ export const CameraScreen = ({ navigation }) => {
         );
     }
 
+    const snapPicture = async () => {
+        // take picture
+        if (cameraRef) {
+            const photo = await cameraRef.current.takePictureAsync();
+            console.log(photo);
+            // returns height,uri,width where uri is the location where image is stored locally
+        }
+    };
+
     function toggleCameraFacing() {
         setFacing(current => (current === 'back' ? 'front' : 'back'));
     }
@@ -40,13 +49,17 @@ export const CameraScreen = ({ navigation }) => {
             <Text variant="label" style={{ textAlign: 'center' }}>
                 Camera
             </Text>
-            <ProfileCamera facing={facing} >
-                <View >
-                    <TouchableOpacity onPress={toggleCameraFacing}>
-                        <Text variant="label">Flip Camera</Text>
-                    </TouchableOpacity>
-                </View>
-            </ProfileCamera>
+            <TouchableOpacity onPress={snapPicture}>
+                <ProfileCamera facing={facing} ref={(camera) => (cameraRef.current = camera)}>
+                    <View >
+                        <TouchableOpacity onPress={toggleCameraFacing}>
+                            <Text variant="label">Flip Camera</Text>
+                        </TouchableOpacity>
+                        {/* for taking picture */}
+
+                    </View>
+                </ProfileCamera>
+            </TouchableOpacity>
         </SafeAreaView >
 
     );
